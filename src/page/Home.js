@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Header from "../common/Header";
-import Container from "../common/Container";
-import Footer from "../common/Footer";
-import Back from "../common/Back";
+import Header from "../components/Header";
+import Container from "../components/Container";
+import Footer from "../components/Footer";
+import Back from "../components/Back";
 
 class Home extends Component {
   render() {

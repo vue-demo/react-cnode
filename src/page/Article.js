@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Header from "../common/Header";
-import CArticle from "../common/Article";
-import Footer from "../common/Footer";
-import Back from "../common/Back";
-import Share from "../common/Share";
+import Header from "../components/Header";
+import CArticle from "../components/Article";
+import Footer from "../components/Footer";
+import Back from "../components/Back";
+import Share from "../components/Share";
 
 class Article extends Component {
   render() {

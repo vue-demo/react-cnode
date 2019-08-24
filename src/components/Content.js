@@ -1,37 +1,42 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
+import axios from '../api/axios';
 
 class Content extends Component {
   constructor(props) {
     super(props);
 
-    this.path = 'https://cnodejs.org/api/v1';
     this.state = {
-      list: [],
-      article: {},
-      isLoaded: false
-    }
+      list: this.props.data,
+      isLoaded: this.props.loading
+    };
+
+    console.log(this.props);//??
+    console.log(this.props.data);//??
   }
 
   getTopics() {
-    axios
-      .get(this.path + '/topics')
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({
-            list: res.data.data,
-            list2: res.data.data,
-            isLoaded: true
-          })
-        }
-      })
-      .catch(error => {
-        this.setState({
-          isLoaded: false,
-          error: error
-        })
+    this.props.dispatch((dispatch, getState) => {
+      dispatch({
+        type: "TOPLIST_UPDATA"
       });
+
+      axios.get('/topics')
+        .then(res => {
+          if (res.status === 200) {
+            dispatch({
+              type: "TOPLIST_SUCC",
+              data: res.data.data
+            });
+          }
+        })
+        .catch(res => {
+          dispatch({
+            type: "TOPLIST_ERROR"
+          });
+        })
+    });
   }
 
   componentDidMount() {
@@ -39,16 +44,17 @@ class Content extends Component {
   }
 
   render() {
-    let list = this.state.list;
+
+    const {list} = this.state;
 
     return (
       <div className="content col-md-8">
         <div className="slide">
-          <div className="slide-item"><img src={require("../img/pic-02.jpg")} alt="aaaaaaa"/></div>
+          <div className="slide-item"><img src={require("../assets/pic-02.jpg")} alt="aaaaaaa"/></div>
         </div>
         <div className="items">
 
-          {list.filter((v,i)=>i<10).map((item, index) => (
+          {list.length && list.filter((v, i) => i < 10).map((item, index) => (
             <div className="item" key={index}>
               <div className="item-pic">
                 <Link to={{
@@ -75,4 +81,4 @@ class Content extends Component {
   }
 }
 
-export default Content;
+export default connect((state) => (state.list))(Content);
