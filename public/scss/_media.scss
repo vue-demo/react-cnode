@@ -1,0 +1,45 @@
+@media (min-width: 768px) {
+  .home {
+    .container {
+      width: 1170px;
+    }
+  }
+  .article {
+    .col-md-9 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .list .item-intro {
+    line-height: 1.1rem;
+    font-size: .75rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .home {
+    .container {
+      width: 1170px;
+    }
+  }
+  .article {
+    .col-md-9 {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+  }
+  .list .item-intro {
+    line-height: 1.1;
+    font-size: .65rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    // width: 1170px;
+  }
+  .list .item-intro {
+    line-height: 1.1rem;
+    font-size: .75rem;
+  }
+}

@@ -1,0 +1,59 @@
+/*
+  article
+*/
+.article {
+  margin: 20px auto;
+
+  .content {
+    padding: 10px;
+    min-height: 900px;
+    background: #fff;
+
+    h1 {
+      color: #333;
+      font-size: 26px;
+    }
+  }
+
+  .aside {
+    padding: 0 10px;
+    background-color: #fff;
+
+    .title {
+
+    }
+
+    h3 {
+      font-weight: normal;
+      margin: 0;
+    }
+  }
+}
+
+.article-info {
+  margin: 20px auto 40px;
+  line-height: 20px;
+  text-align: center;
+  text-indent: 1em;
+  font-size: 16px;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  word-break: break-all;
+
+  span {
+    display: inline-block;
+  }
+}
+
+.article-body {
+  line-height: 1.4;
+
+  p {
+    margin-top: 20px;
+    line-height: 32px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #4d4f53;
+    font-family: "Microsoft YaHei";
+  }
+}

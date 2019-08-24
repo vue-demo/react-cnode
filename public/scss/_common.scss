@@ -1,0 +1,111 @@
+.black {
+  color: #666;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  height: 36px;
+  color: #EC4B4B;
+  border-bottom: 2px solid #666;
+  position: relative;
+
+  h2,
+  h3,
+  h4 {
+    display: inline-block;
+    line-height: 34px;
+    font-size: 20px;
+    border-bottom: 2px solid #EC4B4B;
+    position: relative;
+  }
+}
+
+.share {
+  width: 110px;
+  margin-left: -636px;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  z-index: 30;
+
+  a {
+    display: block;
+    margin-top: 5px;
+    color: transparent;
+    border-radius: 5px;
+    width: 36px;
+    height: 28px;
+    background-repeat: no-repeat;
+  }
+
+  .qzone {
+    background-position: -36px -28px;
+  }
+
+  .sina {
+    background-position: -36px -56px;
+  }
+
+  .weixin {
+    background-position: -36px 0;
+  }
+}
+
+.back {
+  width: 50px;
+  margin-left: 600px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transition-duration: .4s;
+
+  a {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .5);
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      .bg {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  .txt {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.15;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .top {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNDgyMTMwMjQzNjM1IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE4MzUiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PC9zdHlsZT48L2RlZnM+PHBhdGggZD0iTTUxMS45OTggMzkuOTE0bC00MTkuNDk5IDQ2OC40M2gyMDcuNTMzdjQ3NS43NDJoNDE0Ljk0OHYtNDc1Ljc0MmgyMTYuNTE4eiIgcC1pZD0iMTgzNiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 30px;
+  }
+
+  .bg {
+    width: 0;
+    height: 0;
+    margin-right: 5px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 130px;
+    transition: .4s;
+    transform-origin: 90%;
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+  }
+}
