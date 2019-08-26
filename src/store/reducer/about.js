@@ -1,21 +1,20 @@
-export default function article(state = {
+export default function about(state = {
   data: {},
   loading: true
 }, action) {
   let newState;
   switch (action.type) {
-    case "Article_UPDATA":
+    case "About_UPDATA":
       state.data = {};
       state.loading = false;
       newState = Object.assign({}, state);
       return newState;
-    case "Article_SUCC":
-      console.log(action.data);
+    case "About_SUCC":
       state.data = action.data;
       state.loading = true;
       newState = Object.assign({}, state);
       return newState;
-    case "Article_ERROR":
+    case "About_ERROR":
       state.data = {};
       state.loading = false;
       newState = Object.assign({}, state);

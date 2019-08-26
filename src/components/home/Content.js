@@ -32,7 +32,7 @@ class Content extends Component {
   }
 
   render() {
-    const {data} = this.props;
+    const {list} = this.props;
     return (
       <div className="content col-md-8">
         <div className="slide">
@@ -40,7 +40,7 @@ class Content extends Component {
         </div>
         <div className="items">
 
-          {data.length && data.filter((v, i) => i < 10).map((item, index) => (
+          {list.data.length && list.data.filter((v, i) => i < 10).map((item, index) => (
             <div className="item" key={index}>
               <div className="item-pic">
                 <Link to={{
@@ -67,4 +67,8 @@ class Content extends Component {
   }
 }
 
-export default connect(state => state.list)(Content);
+export default connect(state => {
+  return {
+    list: state.list
+  }
+})(Content);

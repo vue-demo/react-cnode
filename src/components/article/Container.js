@@ -3,24 +3,13 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import axios from '../../api/axios';
 
-class Content extends Component {
+class Container extends Component {
   constructor(...arg) {
     super(...arg);
 
-
-    console.log(this.props);
-
-    let id = 0;
-    if (this.props && this.props.data && this.props.data.match.params.id) {
-      id = this.props.data.match.params.id
-    }
-
     this.state = {
-      id: id,
-      list: [],
-      article: {},
-      isLoaded: false
-    }
+      id: (JSON.stringify(this.props.data) !== "{}" ? this.props.data.match.params.id : '') || 0
+    };
   }
 
   getTopics() {
@@ -75,8 +64,21 @@ class Content extends Component {
   }
 
   render() {
-    let {list, article} = this.state;
-    console.log(this.props);
+    let {state} = this.props;
+    let article = state.article.data;
+
+    // console.log(state.list.data);
+    // console.log(state.article.data);
+
+    if (JSON.stringify(state.list.data) === "{}") {
+      return (<div className="container">
+        <div className="row">
+          <div className="col-md-9 col-xs-12"></div>
+          <div className="col-md-3 col-xs-12"></div>
+        </div>
+      </div>)
+    }
+
     return (
       <div className="container">
         <div className="row">
@@ -105,7 +107,7 @@ class Content extends Component {
 
               <div className="list">
 
-                {list.filter((v, i) => i > 10 && i < 15).map((v, index) => (
+                {state.list.data.length && state.list.data.filter((v, i) => i > 10 && i < 15).map((v, index) => (
                   <div className="item" key={index}>
                     <div className="item-img">
                       <Link to="/">
@@ -126,7 +128,7 @@ class Content extends Component {
               <div className="panel-title">精彩图文</div>
               <div className="list-group">
 
-                {list.filter((v, i) => i > 15 && i < 20).map((v, index) => (
+                {state.list.data.length && state.list.data.filter((v, i) => i > 15 && i < 20).map((v, index) => (
                   <div className="img-wrap" key={index}>
                     <Link to="/">
                       <div className="img-cell" style={{backgroundImage: `url(${v.author.avatar_url})`}}/>
@@ -139,7 +141,6 @@ class Content extends Component {
 
               </div>
             </div>
-
           </div>
 
         </div>
@@ -148,4 +149,11 @@ class Content extends Component {
   }
 }
 
-export default connect(state => state.article)(Content);
+export default connect(state => {
+  return {
+    state: {
+      list: state.list,
+      article: state.article,
+    }
+  }
+})(Container);

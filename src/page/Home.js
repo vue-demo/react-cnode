@@ -7,7 +7,7 @@ import Back from "../components/Back";
 class Home extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App home">
         <Header/>
         <Container/>
         <Footer/>

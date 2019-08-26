@@ -1,37 +1,30 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import axios from '../../api/axios';
 
 class Aside extends Component {
-  constructor(props) {
-    super(props);
-
-    this.path = 'https://cnodejs.org/api/v1';
-    this.state = {
-      list: [],
-      article: {},
-      isLoaded: false
-    }
-  }
-
   getTopics() {
-    axios
-      .get(this.path + '/topics')
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({
-            list: res.data.data,
-            list2: res.data.data,
-            isLoaded: true
-          })
-        }
-      })
-      .catch(error => {
-        this.setState({
-          isLoaded: false,
-          error: error
-        })
+    this.props.dispatch((dispatch, getState) => {
+      dispatch({
+        type: "TOPLIST_UPDATA"
       });
+
+      axios.get('/topics')
+        .then(res => {
+          if (res.status === 200) {
+            dispatch({
+              type: "TOPLIST_SUCC",
+              data: res.data.data
+            });
+          }
+        })
+        .catch(error => {
+          dispatch({
+            type: "TOPLIST_ERROR"
+          });
+        });
+    });
   }
 
   componentDidMount() {
@@ -39,8 +32,7 @@ class Aside extends Component {
   }
 
   render() {
-    let list = this.state.list;
-
+    const {list} = this.props;
     return (
       <div className="aside col-md-3">
         <form className="search form-horizontal">
@@ -56,7 +48,7 @@ class Aside extends Component {
           <div className="panel-title">精彩图文</div>
           <div className="list-group">
 
-            {list.filter((v, i) => i > 10 && i < 13).map((v, index) => (
+            {list.data.length && list.data.filter((v, i) => i > 10 && i < 13).map((v, index) => (
               <div className="img-wrap" key={index}>
                 <Link to={{
                   pathname: '/topic/' + v.id,
@@ -79,7 +71,7 @@ class Aside extends Component {
 
         <div className="list">
 
-          {list.filter((v, i) => i > 13 && i < 20).map((v, index) => (
+          {list.data.length && list.data.filter((v, i) => i > 13 && i < 20).map((v, index) => (
             <div className="item" key={index}>
               <div className="item-img">
                 <Link to={{
@@ -105,4 +97,8 @@ class Aside extends Component {
   }
 }
 
-export default Aside;
+export default connect(state => {
+  return {
+    list: state.list
+  }
+})(Aside);
