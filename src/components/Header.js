@@ -25,7 +25,7 @@ class Header extends Component {
                 <li><Link to="/">行业资讯</Link></li>
                 <li><Link to="/">荣誉资质</Link></li>
                 <li><Link to="/">人才招聘</Link></li>
-                <li><Link to="/">关于润缘</Link></li>
+                <li><Link to="/about">关于润缘</Link></li>
               </ul>
             </div>
           </nav>

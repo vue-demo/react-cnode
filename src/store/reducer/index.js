@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 
-// reducers
+// reducer
 import list from "./list";
 import user from "./user";
 

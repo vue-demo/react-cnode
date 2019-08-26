@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from "../components/Header";
-import CArticle from "../components/Article";
+import Container from "../components/article/Container";
 import Footer from "../components/Footer";
 import Back from "../components/Back";
 import Share from "../components/Share";
@@ -8,9 +8,9 @@ import Share from "../components/Share";
 class Article extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App article">
         <Header/>
-        <CArticle data={this.props}/>
+        <Container data={this.props}/>
         <Footer/>
         <Back/>
         <Share/>

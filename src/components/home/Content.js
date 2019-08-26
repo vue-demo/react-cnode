@@ -1,21 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
-import axios from '../api/axios';
+import axios from '../../api/axios';
 
 class Content extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list: this.props.data,
-      isLoaded: this.props.loading
-    };
-
-    console.log(this.props);//??
-    console.log(this.props.data);//??
-  }
-
   getTopics() {
     this.props.dispatch((dispatch, getState) => {
       dispatch({
@@ -44,17 +32,15 @@ class Content extends Component {
   }
 
   render() {
-
-    const {list} = this.state;
-
+    const {data} = this.props;
     return (
       <div className="content col-md-8">
         <div className="slide">
-          <div className="slide-item"><img src={require("../assets/pic-02.jpg")} alt="aaaaaaa"/></div>
+          <div className="slide-item"><img src={require("../../assets/pic-02.jpg")} alt="aaaaaaa"/></div>
         </div>
         <div className="items">
 
-          {list.length && list.filter((v, i) => i < 10).map((item, index) => (
+          {data.length && data.filter((v, i) => i < 10).map((item, index) => (
             <div className="item" key={index}>
               <div className="item-pic">
                 <Link to={{
@@ -81,4 +67,4 @@ class Content extends Component {
   }
 }
 
-export default connect((state) => (state.list))(Content);
+export default connect(state => state.list)(Content);

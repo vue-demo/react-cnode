@@ -1,13 +1,14 @@
 @import "base";
 @import "common";
 @import "header";
-
-@import "channel";
-@import "items";
-@import "aside";
-
+// home
 @import "home";
-@import "article";
-
+@import "home/channel";
+@import "home/items";
+@import "home/aside";
+// article
+@import "article/article";
+// about
+@import "about/about";
 @import "footer";
 @import "media";
