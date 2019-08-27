@@ -3,16 +3,13 @@
 @import "header";
 
 // home
-@import "home/home";
-@import "home/channel";
-@import "home/items";
 @import "home/aside";
 
 // article
-@import "article/article";
+@import "article/aside";
 
 // about
-@import "about/about";
+@import "about/aside";
 
 @import "footer";
 @import "media";

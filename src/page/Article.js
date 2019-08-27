@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import Header from "../components/Header";
-import Container from "../components/article/Container";
+import Aside from "../components/article/Aside";
 import Footer from "../components/Footer";
-import Back from "../components/Back";
-import Share from "../components/Share";
 
 class Article extends Component {
   render() {
     return (
       <div className="App article">
         <Header/>
-        <Container data={this.props}/>
+        <Aside data={this.props}/>
         <Footer/>
-        <Back/>
-        <Share/>
       </div>
     );
   }
