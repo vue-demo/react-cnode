@@ -10,7 +10,6 @@ export default function article(state = {
       newState = Object.assign({}, state);
       return newState;
     case "Article_SUCC":
-      console.log(action.data);
       state.data = action.data;
       state.loading = true;
       newState = Object.assign({}, state);

@@ -4,14 +4,6 @@ import {connect} from "react-redux";
 import axios from '../../api/axios';
 
 class Container extends Component {
-  constructor(...arg) {
-    super(...arg);
-
-    this.state = {
-      id: (JSON.stringify(this.props.data) !== "{}" ? this.props.data.match.params.id : '') || 0
-    };
-  }
-
   getTopics() {
     this.props.dispatch((dispatch, getState) => {
       dispatch({
@@ -60,7 +52,7 @@ class Container extends Component {
 
   componentDidMount() {
     this.getTopics();
-    this.getTopic(this.state.id);
+    this.getTopic(this.props.data.match.params.id);
   }
 
   render() {
@@ -110,12 +102,18 @@ class Container extends Component {
                 {state.list.data.length && state.list.data.filter((v, i) => i > 10 && i < 15).map((v, index) => (
                   <div className="item" key={index}>
                     <div className="item-img">
-                      <Link to="/">
+                      <Link to={{
+                        pathname: '/topic/' + v.id,
+                        state: {id: v.id}
+                      }}>
                         <div className="img-cell" style={{backgroundImage: `url(${v.author.avatar_url})`}}/>
                       </Link>
                     </div>
                     <div className="item-intro">
-                      <Link to="/">{v.title}</Link>
+                      <Link to={{
+                        pathname: '/topic/' + v.id,
+                        state: {id: v.id}
+                      }}>{v.title}</Link>
                     </div>
                     <div className="item-time">{v.last_reply_at}</div>
                   </div>
@@ -130,7 +128,10 @@ class Container extends Component {
 
                 {state.list.data.length && state.list.data.filter((v, i) => i > 15 && i < 20).map((v, index) => (
                   <div className="img-wrap" key={index}>
-                    <Link to="/">
+                    <Link to={{
+                      pathname: '/topic/' + v.id,
+                      state: {id: v.id}
+                    }}>
                       <div className="img-cell" style={{backgroundImage: `url(${v.author.avatar_url})`}}/>
                       <div className="img-info">
                         <p>{v.title}</p>
