@@ -1,16 +1,18 @@
 import {combineReducers} from "redux";
 
 // reducer
-import list from "./list";
+import all from "./all";
+import good from "./good";
+import share from "./share";
+import ask from "./ask";
 import user from "./user";
-import about from "./about";
-import article from "./article";
 
 let Index = combineReducers({
-  list,
-  user,
-  about,
-  article
+  all,
+  good,
+  share,
+  ask,
+  user
 });
 
 export default Index;

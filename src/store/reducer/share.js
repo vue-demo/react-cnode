@@ -1,4 +1,4 @@
-export default function article(state = {
+export default function share(state = {
   data: {},
   loading: true
 }, action) {

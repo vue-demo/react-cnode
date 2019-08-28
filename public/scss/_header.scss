@@ -2,19 +2,17 @@
   header
 */
 .header {
+  display: flex;
   width: 100%;
   background-color: #fff;
-  //border-bottom: 1px solid #e1e1e1;
-  //box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  .container {
-    position: relative;
-  }
 
-  .navbar {
-    margin: 10px auto;
-  }
-
-  .navbar-nav > li > a {
-    padding: 15px 20px;
+  a {
+    flex: 1;
+    line-height: 40px;
+    text-align: center;
+    color: #666;
+    &.on{
+      color: #333;
+    }
   }
 }

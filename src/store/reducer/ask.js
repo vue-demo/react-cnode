@@ -1,4 +1,4 @@
-export default function about(state = {
+export default function ask(state = {
   data: {},
   loading: true
 }, action) {

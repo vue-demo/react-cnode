@@ -1,4 +1,4 @@
-export default function list(state = {
+export default function all(state = {
   data: {},
   loading: true
 }, action) {
@@ -10,7 +10,7 @@ export default function list(state = {
       newState = Object.assign({}, state);
       return newState;
     case "TOPLIST_SUCC":
-      state.data = action.data;
+      state.data = action.data.data;
       state.loading = true;
       newState = Object.assign({}, state);
       return newState;

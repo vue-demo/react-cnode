@@ -1,22 +1,43 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from "react-router-dom";
+// import axios from '../../api/axios';
 
-class Header extends Component {
+const data = [
+  {
+    label: '全部',
+    value: 'all',
+  }, {
+    label: '精品',
+    value: 'good',
+  },
+  {
+    label: '分享',
+    value: 'share',
+  },
+  {
+    label: '问答',
+    value: 'ask',
+  },
+  {
+    label: '我的',
+    value: 'me',
+  }
+];
+
+class NavMenu extends Component {
+  constructor(...args) {
+    super(...args);
+  }
+
   render() {
+    let active = this.props.active;
+    console.log(active);
     return (
-      <div className="header">
-        <ul className="nav">
-          <li className="active"><Link to="/">首页</Link></li>
-          <li><Link to="/">产品中心</Link></li>
-          <li><Link to="/">新闻动态</Link></li>
-          <li><Link to="/">行业资讯</Link></li>
-          <li><Link to="/">荣誉资质</Link></li>
-          <li><Link to="/">人才招聘</Link></li>
-          <li><Link to="/about">关于润缘</Link></li>
-        </ul>
+      <div className={'header'}>
+        {data.map((v, i) => (<Link className={active} key={i} to={v.value}>{v.label}</Link>))}
       </div>
     );
   }
 }
 
-export default Header;
+export default NavMenu;
