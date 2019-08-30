@@ -1,22 +1,16 @@
-export default function share(state = {
-  data: {},
-  loading: true
-}, action) {
+export default function share(state = {data: {}}, action) {
   let newState;
   switch (action.type) {
     case "Share_Updata":
-      state.data = {};
-      state.loading = false;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     case "Share_Succ":
-      state.data = action.data;
-      state.loading = true;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     case "Share_Error":
-      state.data = {};
-      state.loading = false;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     default:

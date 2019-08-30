@@ -1,54 +1,56 @@
 import React, {Component} from 'react';
-// import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-
 import axios from '../../api/axios';
+import Loading from "../Loading";
 import {Card, List} from 'antd-mobile';
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
 class Aside extends Component {
-  getTopics() {
-    this.props.dispatch((dispatch, getState) => {
-      axios
-        .get('/user/vmto', {
-          params: {
-            accessToken: 'd2cb9054-15f9-4760-be1a-0f53c4287111'
-          }
-        })
-        .then(res => {
-          if (res.status === 200) {
-            dispatch({
-              type: "Success_Login",
-              data: res.data.data
-            });
-          }
-        })
-        .catch(error => {
-          dispatch({
-            type: "Fall_Login"
-          });
-        });
-    });
+  constructor(props) {
+    super(props);
+    console.log(1);
   }
 
   componentDidMount() {
-    console.log(1);
     this.getTopics();
+    console.log(2);
   }
 
-  shouldComponentUpdate() {
-    console.log(2);
-    return true
+  componentDidUpdate() {
+    console.log(3);
+  }
+
+  getTopics() {
+    this.props.dispatch((dispatch, getState) => {
+        axios
+          .get('/user/vmto', {
+            params: {accesstoken: '846fcf3a-0c2a-4c95-b286-dbf137cfc580'}
+          })
+          .then(res => {
+            if (res.status === 200) {
+              dispatch({
+                type: "Success_Login",
+                data: res.data.data
+              });
+            }
+          })
+          .catch(error => {
+            dispatch({
+              type: "Fall_Login"
+            });
+          });
+      }
+    )
+    ;
   }
 
   render() {
     let {data} = this.props;
-    console.log('user', data && data);
 
     if (JSON.stringify(data) === "{}") {
-      return (<div>暂无数据~</div>)
+      return (<div className="container"><Loading/></div>)
     }
 
     return (<div className="container">

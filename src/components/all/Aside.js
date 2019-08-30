@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 
 import axios from '../../api/axios';
 import {List} from 'antd-mobile';
+import Loading from "../Loading";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -11,10 +12,6 @@ const Brief = Item.Brief;
 class Aside extends Component {
   getTopics() {
     this.props.dispatch((dispatch, getState) => {
-      dispatch({
-        type: "All_Updata"
-      });
-
       axios
         .get('/topics?tab=all&page=1&limit=10')
         .then(res => {
@@ -39,10 +36,10 @@ class Aside extends Component {
 
   render() {
     let {data} = this.props;
-    console.log('all', data);
+    console.log('all', this.props);
 
     if (JSON.stringify(data) === "{}") {
-      return (<div>暂无数据~</div>)
+      return (<div className="container"><Loading/></div>)
     }
 
     return (

@@ -1,22 +1,16 @@
-export default function publish(state = {
-  data: {},
-  loading: true
-}, action) {
+export default function publish(state = {data: {}}, action) {
   let newState;
   switch (action.type) {
     case "Publish_Updata":
-      state.data = {};
-      state.loading = false;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     case "Publish_Succ":
-      state.data = action.data;
-      state.loading = true;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     case "Publish_Error":
-      state.data = {};
-      state.loading = false;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     default:

@@ -23,7 +23,6 @@ const data = [
 class Footer extends Component {
   render() {
     let {match} = this.props;
-    console.log(match);
     return (
       <div className="footer">
         <div className="menu">

@@ -1,35 +1,26 @@
-export default function msg(state = {
-  msg: {},
-  count: {},
-  loading: true
-}, action) {
+export default function publish(state = {data: {}}, action) {
   let newState;
   switch (action.type) {
     case "Msg_Updata":
-      state.loading = false;
       newState = Object.assign({}, state);
       return newState;
     case "Msg_Succ":
-      state.msg = action.data;
-      state.loading = true;
+      state.data.has_read_messages = action.data.has_read_messages;
+      state.data.hasnot_read_messages = action.data.hasnot_read_messages;
       newState = Object.assign({}, state);
       return newState;
     case "Msg_Error":
-      state.loading = false;
       newState = Object.assign({}, state);
       return newState;
-    case "Msg_count_Updata":
-      state.data = {};
-      state.loading = false;
+
+    case "Count_Updata":
       newState = Object.assign({}, state);
       return newState;
-    case "Msg_count_Succ":
-      state.count = action.data;
-      state.loading = true;
+    case "Count_Succ":
+      state = action;
       newState = Object.assign({}, state);
       return newState;
-    case "Msg_count_Error":
-      state.loading = false;
+    case "Count_Error":
       newState = Object.assign({}, state);
       return newState;
     default:

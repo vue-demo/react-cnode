@@ -1,22 +1,16 @@
-export default function detail(state = {
-  data: {},
-  loading: true
-}, action) {
+export default function detail(state = {data: {}}, action) {
   let newState;
   switch (action.type) {
     case "Detail_Updata":
-      state.data = {};
-      state.loading = false;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     case "Detail_Succ":
-      state.data = action.data.data;
-      state.loading = true;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     case "Detail_Error":
-      state.data = {};
-      state.loading = false;
+      state = action;
       newState = Object.assign({}, state);
       return newState;
     default:

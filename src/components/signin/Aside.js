@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 
 import axios from '../../api/axios';
 import {List} from 'antd-mobile';
+import Loading from "../Loading";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -44,7 +45,7 @@ class Aside extends Component {
     console.log('signin', data);
 
     if (JSON.stringify(data) === "{}") {
-      return (<div>暂无数据~</div>)
+      return (<div className="container"><Loading/></div>)
     }
 
     return (
