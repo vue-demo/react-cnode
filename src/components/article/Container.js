@@ -6,9 +6,6 @@ import axios from '../../api/axios';
 class Container extends Component {
   getTopics() {
     this.props.dispatch((dispatch, getState) => {
-      dispatch({
-        type: "TOPLIST_UPDATA"
-      });
       axios
         .get('/topics')
         .then(res => {
@@ -29,9 +26,6 @@ class Container extends Component {
 
   getTopic(id) {
     this.props.dispatch((dispatch, getState) => {
-      dispatch({
-        type: "Article_UPDATA"
-      });
       axios
         .get('/topic/' + id)
         .then(res => {

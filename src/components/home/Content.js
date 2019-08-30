@@ -1,38 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from "react-redux";
-import axios from '../../api/axios';
 
 class Content extends Component {
-  getTopics() {
-    this.props.dispatch((dispatch, getState) => {
-      dispatch({
-        type: "TOPLIST_UPDATA"
-      });
-
-      axios.get('/topics')
-        .then(res => {
-          if (res.status === 200) {
-            dispatch({
-              type: "TOPLIST_SUCC",
-              data: res.data.data
-            });
-          }
-        })
-        .catch(res => {
-          dispatch({
-            type: "TOPLIST_ERROR"
-          });
-        })
-    });
-  }
-
-  componentDidMount() {
-    this.getTopics();
-  }
-
   render() {
     const {list} = this.props;
+    console.log(list);
     return (
       <div className="content col-md-8">
         <div className="slide">
@@ -40,7 +12,7 @@ class Content extends Component {
         </div>
         <div className="items">
 
-          {list.data.length && list.data.filter((v, i) => i < 10).map((item, index) => (
+          {list.data.length && list.data.map((item, index) => (
             <div className="item" key={index}>
               <div className="item-pic">
                 <Link to={{
@@ -67,8 +39,4 @@ class Content extends Component {
   }
 }
 
-export default connect(state => {
-  return {
-    list: state.list
-  }
-})(Content);
+export default Content;
