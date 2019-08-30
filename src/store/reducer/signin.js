@@ -1,10 +1,10 @@
-export default function user(state = {
+export default function signin(state = {
   success: false
 }, action) {
   let newState;
   switch (action.type) {
     case "Success_Login":
-      console.log('登录成功', action);
+      // console.log('登录成功', action);
       state = {};
       state = action;
       newState = Object.assign({}, state);

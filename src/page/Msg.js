@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Aside from "../components/user/Aside";
+import Aside from "../components/msg/Aside";
 import Footer from "../components/Footer";
 
-class All extends Component {
+class Msg extends Component {
   render() {
     return (
-      <div className="App user">
+      <div className="App msg">
         <Aside/>
         <Footer match={this.props.match}/>
       </div>
@@ -13,4 +13,4 @@ class All extends Component {
   }
 }
 
-export default All;
+export default Msg;

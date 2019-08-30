@@ -1,40 +1,44 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+
 // import axios from '../../api/axios';
+import {NavBar, Icon} from 'antd-mobile';
 
 const data = [
   {
     label: '全部',
-    value: 'all',
+    value: '/all',
   }, {
     label: '精品',
-    value: 'good',
+    value: '/good',
   },
   {
     label: '分享',
-    value: 'share',
+    value: '/share',
   },
   {
     label: '问答',
-    value: 'ask',
-  },
-  {
-    label: '我的',
-    value: 'me',
+    value: '/ask',
   }
 ];
 
 class NavMenu extends Component {
-  constructor(...args) {
-    super(...args);
-  }
-
   render() {
-    let active = this.props.active;
-    console.log(active);
+    let {match} = this.props;
+
     return (
       <div className={'header'}>
-        {data.map((v, i) => (<Link className={active} key={i} to={v.value}>{v.label}</Link>))}
+        <NavBar
+          mode="dark"
+          leftContent={[<Icon key="1" type="ellipsis"/>]}
+          rightContent={[
+            <Icon key="0" type="search" style={{marginRight: '16px'}}/>
+          ]}>润缘控股</NavBar>
+        <div className="nav">
+          {data.map((v, i) => (
+            <Link className={v.value === match.path ? 'active' : ''} key={i} to={v.value}>{v.label}</Link>
+          ))}
+        </div>
       </div>
     );
   }

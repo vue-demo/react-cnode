@@ -4,17 +4,17 @@ export default function share(state = {
 }, action) {
   let newState;
   switch (action.type) {
-    case "Article_UPDATA":
+    case "Share_Updata":
       state.data = {};
       state.loading = false;
       newState = Object.assign({}, state);
       return newState;
-    case "Article_SUCC":
+    case "Share_Succ":
       state.data = action.data;
       state.loading = true;
       newState = Object.assign({}, state);
       return newState;
-    case "Article_ERROR":
+    case "Share_Error":
       state.data = {};
       state.loading = false;
       newState = Object.assign({}, state);

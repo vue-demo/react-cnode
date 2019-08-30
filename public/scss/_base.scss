@@ -45,3 +45,17 @@ img {
   -moz-box-shadow: 5px 0 20px -5px rgba(0, 0, 0, 0.5), -5px 0 20px -5px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 0 20px -5px rgba(0, 0, 0, 0.5), -5px 0 20px -5px rgba(0, 0, 0, 0.5);
 }
+
+.container {
+  padding-top: 86px;
+  padding-bottom: 50px;
+  min-height: calc(100vh - 136px);
+}
+
+.publish,
+.msg,
+.user {
+  .container {
+    padding-top: 0
+  }
+}

@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Aside from "../components/all/Aside";
 
-class All extends Component {
+// import axios from '../../api/axios';
+
+class Detail extends Component {
   render() {
     return (
       <div className="App all">
         <Header match={this.props.match}/>
-        <Aside/>
-        <Footer match={this.props.match}/>
+        <div>
+          <p>Detail</p>
+          <p>Detail</p>
+        </div>
       </div>
     );
   }
 }
 
-export default All;
+export default Detail;

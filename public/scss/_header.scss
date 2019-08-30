@@ -2,17 +2,28 @@
   header
 */
 .header {
-  display: flex;
   width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.nav {
+  display: flex;
+  height: 40px;
   background-color: #fff;
+  border-bottom: 1px solid #ccc;
 
   a {
     flex: 1;
+    height: 40px;
     line-height: 40px;
     text-align: center;
     color: #666;
-    &.on{
-      color: #333;
+
+    &.active {
+      color: #108ee9;
+      border-bottom: 2px solid #108ee9;
+      position: relative;
     }
   }
 }

@@ -4,17 +4,17 @@ export default function ask(state = {
 }, action) {
   let newState;
   switch (action.type) {
-    case "About_UPDATA":
+    case "Ask_Updata":
       state.data = {};
       state.loading = false;
       newState = Object.assign({}, state);
       return newState;
-    case "About_SUCC":
+    case "Ask_Succ":
       state.data = action.data;
       state.loading = true;
       newState = Object.assign({}, state);
       return newState;
-    case "About_ERROR":
+    case "Ask_Error":
       state.data = {};
       state.loading = false;
       newState = Object.assign({}, state);

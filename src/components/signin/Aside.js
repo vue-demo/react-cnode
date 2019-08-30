@@ -9,25 +9,27 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 class Aside extends Component {
-  getTopics() {
+  getTopics(name, token) {
+    let username = name ? name : 'vmto';
+    let accessToken = token ? token : 'd2cb9054-15f9-4760-be1a-0f53c4287111';
     this.props.dispatch((dispatch, getState) => {
-      dispatch({
-        type: "All_Updata"
-      });
-
       axios
-        .get('/topics?tab=all&page=1&limit=10')
+        .get('/user/' + username, {
+          params: {
+            accessToken: accessToken
+          }
+        })
         .then(res => {
           if (res.status === 200) {
             dispatch({
-              type: "All_Succ",
+              type: "Success_Login",
               data: res.data.data
             });
           }
         })
         .catch(error => {
           dispatch({
-            type: "All_Error"
+            type: "Fall_Login"
           });
         });
     });
@@ -39,7 +41,7 @@ class Aside extends Component {
 
   render() {
     let {data} = this.props;
-    console.log('all', data);
+    console.log('signin', data);
 
     if (JSON.stringify(data) === "{}") {
       return (<div>暂无数据~</div>)
@@ -58,4 +60,4 @@ class Aside extends Component {
   }
 }
 
-export default connect(state => state.all)(Aside);
+export default connect(state => state.signin)(Aside);

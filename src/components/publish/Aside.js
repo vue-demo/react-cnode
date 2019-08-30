@@ -16,7 +16,11 @@ class Aside extends Component {
       });
 
       axios
-        .get('/topics?tab=all&page=1&limit=10')
+        .get('/message', {
+          params: {
+            accessToken: 'd2cb9054-15f9-4760-be1a-0f53c4287111'
+          }
+        })
         .then(res => {
           if (res.status === 200) {
             dispatch({
